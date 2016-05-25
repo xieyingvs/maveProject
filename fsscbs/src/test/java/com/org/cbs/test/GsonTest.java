@@ -17,37 +17,49 @@ import com.org.cbs.model.User;
 import junit.framework.TestCase;
 
 public class GsonTest extends TestCase {
-	Gson gson = new Gson();
 
 	@Test
 	public void test() {
+		
+		System.out.println(Sun.RED.toString());
+		System.out.println(12);
 
-		Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
-		Map<User, String> map1 = new LinkedHashMap<User, String>();// 使用LinkedHashMap将结果按先进先出顺序排列
-		map1.put(new User("1", "10"), "a");
-		map1.put(new User("2", "16"), "b");
-		String s = gson.toJson(map1);
-		System.out.println(s);// 结果:[[{"x":5,"y":6},"a"],[{"x":8,"y":8},"b"]]
-
-		Map<User, String> retMap = gson.fromJson(s, new TypeToken<Map<User, String>>() {
-		}.getType());
-		for (User p : retMap.keySet()) {
-			System.out.println("key:" + p + " values:" + retMap.get(p));
-		}
-		System.out.println(retMap);
-		System.out.println("----------------------------------");
-		Map<String, User> map2 = new LinkedHashMap<String, User>();
-		map2.put("a", new User("1", "12"));
-		map2.put("b", new User("2", "15"));
-		String s2 = gson.toJson(map2);
-		System.out.println(s2);
-
-		Map<String, User> retMap2 = gson.fromJson(s2, new TypeToken<Map<String, User>>() {
-		}.getType());
-		for (String key : retMap2.keySet()) {
-			System.out.println("key:" + key + " values:" + retMap2.get(key));
-		}
 	}
+
+	Gson gson = new Gson();
+	// @Test
+	// public void test() {
+	//
+	// Gson gson = new
+	// GsonBuilder().enableComplexMapKeySerialization().create();
+	// Map<User, String> map1 = new LinkedHashMap<User, String>();//
+	// 使用LinkedHashMap将结果按先进先出顺序排列
+	// map1.put(new User("1", "10"), "a");
+	// map1.put(new User("2", "16"), "b");
+	// String s = gson.toJson(map1);
+	// System.out.println(s);// 结果:[[{"x":5,"y":6},"a"],[{"x":8,"y":8},"b"]]
+	//
+	// Map<User, String> retMap = gson.fromJson(s, new TypeToken<Map<User,
+	// String>>() {
+	// }.getType());
+	// for (User p : retMap.keySet()) {
+	// System.out.println("key:" + p + " values:" + retMap.get(p));
+	// }
+	// System.out.println(retMap);
+	// System.out.println("----------------------------------");
+	// Map<String, User> map2 = new LinkedHashMap<String, User>();
+	// map2.put("a", new User("1", "12"));
+	// map2.put("b", new User("2", "15"));
+	// String s2 = gson.toJson(map2);
+	// System.out.println(s2);
+	//
+	// Map<String, User> retMap2 = gson.fromJson(s2, new TypeToken<Map<String,
+	// User>>() {
+	// }.getType());
+	// for (String key : retMap2.keySet()) {
+	// System.out.println("key:" + key + " values:" + retMap2.get(key));
+	// }
+	// }
 
 	// @Test
 	// public void test2() {

@@ -1,0 +1,6 @@
+src/test/java:
+Sun : 枚举类
+         注意枚举值之间分号和逗号的区别,注意枚举值中的index,name. toString 方法的使用!
+
+GsonTest: json数据转换测试
+         注意(maven)jar包引用        
