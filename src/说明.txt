@@ -1,0 +1,13 @@
+webService  
+hessian 服务端   客户端调用   远程调用  hessian * .xml  
+	  web.xml:注册hessian
+	     发布hessian接口:
+	     接收hessian接口:
+
+
+ActiveMQ  发布消息队列 主题    配置文件  activemq*.xml  
+	    配置消息模板:
+	    配置生产者:
+	    配置消费者:
+	    配置监听器:
+    

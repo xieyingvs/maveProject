@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- 配置connectionFactory -->
+	<bean id="connectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL">
+					<value>tcp://127.0.0.1:61616</value>
+				</property>
+			</bean>
+		</property>
+		<property name="maxConnections" value="100"></property>
+	</bean>
+
+	<!-- 配置消息发送目标 -->
+	<bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg index="0" value="subject" />
+	</bean>
+
+
+	<!-- jms支持 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestination" ref="defaultDestination" />
+	</bean>
+
+	<bean id="HelloSender" class="com.org.cbs.activemq.HelloSender">
+		<property name="jmsTemplate" ref="jmsTemplate"></property>
+
+	</bean>
+	<bean id="HelloReceiver" class="com.org.cbs.activemq.HelloReceiver">
+		<property name="jmsTemplate" ref="jmsTemplate"></property>
+	</bean>
+
+
+</beans>
